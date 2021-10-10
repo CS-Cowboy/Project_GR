@@ -16,17 +16,19 @@ namespace com.braineeeeDevs.gr
         public ObjectAttributes traits;
         protected Animation animators;
         protected Rigidbody rbPhysics;
-        protected Guid originPoolID;
         public Guid PoolID
         {
             get
             {
-                return originPoolID;
+                return traits.poolID;
             }
         }
         public virtual void Awake()
         {
-            originPoolID = Guid.NewGuid();
+            if (traits.poolID == Guid.Empty) //Using the ObjectAttributes ScriptableObject persists the ID across runtime and ensures all objects that use said ObjAttr have the same ID.
+            {
+                traits.poolID = Guid.NewGuid();
+            }
         }
         public virtual void Start()
         {
