@@ -15,7 +15,7 @@ namespace com.braineeeeDevs.gr.Tests
         {
             for (int c = 0; c < pool.capacity; c++)
             {
-                pool.Give(CreateObject()); //Calling the BaseObject method because it automatically disables the object.
+                pool.Give(CreateObject());
             }
         }
         /// <summary>
