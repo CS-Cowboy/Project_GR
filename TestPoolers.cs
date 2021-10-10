@@ -15,7 +15,7 @@ namespace com.braineeeeDevs.gr.Tests
         {
             for (int c = 0; c < pool.capacity; c++)
             {
-                pool.Give(CreateObject());
+                pool.Give(CreateObject()); //Calling the BaseObject method because it automatically disables the object.
             }
         }
         /// <summary>
@@ -24,7 +24,9 @@ namespace com.braineeeeDevs.gr.Tests
         /// <returns></returns>
         public ExampleObject CreateObject()
         {
-            return (MonoBehaviour.Instantiate(Resources.Load("example")) as GameObject).GetComponent<ExampleObject>();
+            var exObj = (MonoBehaviour.Instantiate(Resources.Load("example")) as GameObject).GetComponent<ExampleObject>();
+            exObj.traits.poolID = System.Guid.Empty.ToString();
+            return exObj;
         }
         [TearDown]
         public void TearDown()

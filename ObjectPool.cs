@@ -36,10 +36,10 @@ namespace com.braineeeeDevs.gr
         /// <param name="obj">The object this pool will use.</param>
         public void AssignPrefab(BasicObject obj)
         {
-            prefab = obj;
-            capacity = prefab.traits.poolCapacity;
             if (id == Guid.Empty)
             {
+                prefab = obj;
+                capacity = prefab.traits.poolCapacity;
                 id = obj.PoolID;
             }
             else
@@ -59,7 +59,7 @@ namespace com.braineeeeDevs.gr
                 {
                     DestroyImmediate(obj);
                 }
-                else 
+                else
                 {
                     objects.Push(obj);
                 }

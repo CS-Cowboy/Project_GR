@@ -12,7 +12,7 @@ namespace com.braineeeeDevs.gr
     public class PoolHandler : MonoBehaviour
     {
         protected static Dictionary<Guid, ObjectPool> pools = new Dictionary<Guid, ObjectPool>();
-        
+
         /// <summary>
         /// The quantity of pools held internally.
         /// </summary>
@@ -34,6 +34,15 @@ namespace com.braineeeeDevs.gr
             return pools.ContainsKey(id);
         }
         /// <summary>
+        /// Gets the number of objects pooled with a particular ID. 
+        /// </summary>  
+        /// <param name="id">The ID to of object types to find.</param>
+        /// <returns>The quantity of objects pooled with the ID given.</returns>
+        public int GetQuantityOfObjectsPooledByID(Guid id)
+        {
+            return pools[id].Count;
+        }
+        /// <summary>
         /// Used to determine if a pool has any copies of a particular object based on its Guid.
         /// </summary>
         /// <param name="id">The Guid to search for.</param>
@@ -48,13 +57,20 @@ namespace com.braineeeeDevs.gr
         /// <param name="obj">The object to put away.</param>
         public static void GiveObject(BasicObject obj)
         {
-            if (pools.ContainsKey(obj.PoolID))
+            if (obj.PoolID != Guid.Empty)
             {
-                pools[obj.PoolID].Give(obj);
+                if (pools.ContainsKey(obj.PoolID))
+                {
+                    pools[obj.PoolID].Give(obj);
+                }
+                else
+                {
+                    CreateNewPoolFor(obj);
+                }
             }
             else
             {
-                CreateNewPoolFor(obj);
+                Debug.LogWarning("Object given to 'GiveObject()' has an empty Guid.");
             }
         }
         /// <summary>
@@ -76,16 +92,24 @@ namespace com.braineeeeDevs.gr
         /// <returns>An object from the associated pool. Null if this class has never been given an instance of the desired object.</returns>
         public static BasicObject GetObject(Guid id)
         {
-            if (pools.ContainsKey(id))
+            if (id != Guid.Empty)
             {
-                return pools[id].GetObject();
+                if (pools.ContainsKey(id))
+                {
+                    return pools[id].GetObject();
+                }
+                else
+                {
+                    Debug.LogWarning("Object does not exist in the global pool. Have you called ReturnObject() at least once?");
+                    return null;
+                }
             }
             else
             {
-                Debug.LogWarning("Object does not exist in the global pool. Have you called ReturnObject() at least once?");
+                Debug.LogWarning("Guid used to retrieve object via 'GetObject()' has an empty Guid.");
                 return null;
             }
         }
-
     }
+
 }
