@@ -13,7 +13,6 @@ namespace com.braineeeeDevs.gr
     {
         public uint capacity = 100;
         private Guid id = Guid.Empty;
-        public Dictionary<string, uint> uniqueCountedObjectNames = new Dictionary<string, uint>();
         protected BasicObject prefab;
         protected Stack<BasicObject> objects = new Stack<BasicObject>();
         public Guid ID
