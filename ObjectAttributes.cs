@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace com.braineeeeDevs.gr
 {
-    [RequireComponent(typeof(AnimationCurve))]
     public class ObjectAttributes : ScriptableObject
     {
         /// <summary>
