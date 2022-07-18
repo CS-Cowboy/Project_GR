@@ -1,0 +1,14 @@
+
+.vscode/settings.json
+Library/**
+Logs/**
+obj/**
+Packages/**
+ProjectSettings/**
+Temp/**
+UserSettings/**
+*.cs.meta
+*.meta
+**.csproj
+**.sln
+Assets/Scenes/**
