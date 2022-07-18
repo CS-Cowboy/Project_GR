@@ -24,7 +24,7 @@ namespace com.braineeeeDevs.objectPooling.Tests
         public DisposableObject CreateObject()
         {
             var exObj = (MonoBehaviour.Instantiate(Resources.Load("example")) as GameObject).GetComponent<DisposableObject>();
-            exObj.traits.poolID = System.Guid.Empty.ToString();
+            exObj.Traits.poolID = System.Guid.Empty.ToString();
             return exObj;
         }
         [TearDown]
@@ -87,7 +87,7 @@ namespace com.braineeeeDevs.objectPooling.Tests
             LoadPool();
             //Do this once more and return to achieve test.
             pool.Give(CreateObject());
-            Assert.IsTrue(pool.Count == newObject.traits.poolCapacity, "ObjectPool has failed to limit its capacity.");
+            Assert.IsTrue(pool.Count == newObject.Traits.poolCapacity, "ObjectPool has failed to limit its capacity.");
             TearDown();
 
         }

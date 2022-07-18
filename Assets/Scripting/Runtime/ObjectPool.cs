@@ -39,7 +39,7 @@ namespace com.braineeeeDevs.objectPooling
             if (id == Guid.Empty)
             {
                 prefab = obj;
-                capacity = prefab.traits.poolCapacity;
+                capacity = prefab.Traits.poolCapacity;
                 id = obj.PoolID;
             }
             else

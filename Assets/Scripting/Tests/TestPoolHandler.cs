@@ -15,7 +15,7 @@ namespace com.braineeeeDevs.objectPooling.Tests
         public DisposableObject CreateObjectWith(string prefabName, System.Guid id)
         {
             var newObj = (MonoBehaviour.Instantiate(Resources.Load(prefabName)) as GameObject).GetComponent<DisposableObject>();
-            newObj.traits.poolID = id.ToString();
+            newObj.Traits.poolID = id.ToString();
             newObj.Awake();
             return newObj;
         }
@@ -35,7 +35,7 @@ namespace com.braineeeeDevs.objectPooling.Tests
         {
             Setup();
             var obj = CreateObjectWith("example", System.Guid.NewGuid());
-            PoolHandler.GiveObject(obj);
+            PoolHandler.Give(obj);
             Assert.IsTrue(handler.Count != 0, "PoolHandler has failed to add a new pool for given object.");
             TearDown();
         }
@@ -45,9 +45,9 @@ namespace com.braineeeeDevs.objectPooling.Tests
         {
             Setup();
             var first = CreateObjectWith("example", System.Guid.NewGuid());
-            var second = CreateObjectWith("example", new System.Guid(first.traits.poolID));
-            PoolHandler.GiveObject(first);
-            PoolHandler.GiveObject(second);
+            var second = CreateObjectWith("example", new System.Guid(first.Traits.poolID));
+            PoolHandler.Give(first);
+            PoolHandler.Give(second);
             Assert.IsTrue(handler.GetQuantityOfObjectsPooledByID(second.PoolID) == 2, "PoolHandler has failed to pool objects with the same ID together.");
             TearDown();
         }
@@ -58,8 +58,8 @@ namespace com.braineeeeDevs.objectPooling.Tests
             Setup();
             var obj_example = CreateObjectWith("example", System.Guid.Empty);
             var obj_different = CreateObjectWith("different_example", System.Guid.Empty);
-            PoolHandler.GiveObject(obj_example);
-            PoolHandler.GiveObject(obj_different);
+            PoolHandler.Give(obj_example);
+            PoolHandler.Give(obj_different);
             Assert.IsTrue(handler.Count == 2 && handler.GetQuantityOfObjectsPooledByID(obj_example.PoolID) == 1 && handler.GetQuantityOfObjectsPooledByID(obj_different.PoolID) == 1, "PoolHandler has failed to pool objects with the same ID together.");
             TearDown();
         }
@@ -68,7 +68,7 @@ namespace com.braineeeeDevs.objectPooling.Tests
         {
             Setup();
             var obj = CreateObjectWith("example", System.Guid.NewGuid());
-            PoolHandler.GiveObject(obj);
+            PoolHandler.Give(obj);
             var result = PoolHandler.GetObject(obj.PoolID);
             Assert.IsNotNull(result, "PoolHandler has failed to add a new pool for given object.");
             TearDown();

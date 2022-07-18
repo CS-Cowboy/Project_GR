@@ -55,7 +55,7 @@ namespace com.braineeeeDevs.objectPooling
         /// Returns a BasicObject derived object to it associated pool.
         /// </summary>
         /// <param name="obj">The object to put away.</param>
-        public static void GiveObject(PoolableObject obj)
+        public static void Give(PoolableObject obj)
         {
             if (obj.PoolID != Guid.Empty)
             {
