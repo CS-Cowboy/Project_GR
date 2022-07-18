@@ -23,9 +23,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Services.Core.Network
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Services.Core.Analytics", "Unity.Services.Core.Analytics.csproj", "{6a249abe-b0c7-3349-6a45-8649bb5e1f45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Services.Core.Scheduler", "Unity.Services.Core.Scheduler.csproj", "{8b1c6577-05d7-db59-6fbc-3732b02aca31}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonObjectPooler", "CommonObjectPooler.csproj", "{90b82776-61e5-6171-6b7b-6981c79999b4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Services.Core.Scheduler", "Unity.Services.Core.Scheduler.csproj", "{8b1c6577-05d7-db59-6fbc-3732b02aca31}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Services.Core.Registration", "Unity.Services.Core.Registration.csproj", "{625fdb56-6645-c0e8-766f-ee68909c8434}"
 EndProject
@@ -82,10 +82,10 @@ Global
 		{9d806d75-8683-776d-cfdd-4d89ef151c6d}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6a249abe-b0c7-3349-6a45-8649bb5e1f45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6a249abe-b0c7-3349-6a45-8649bb5e1f45}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8b1c6577-05d7-db59-6fbc-3732b02aca31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8b1c6577-05d7-db59-6fbc-3732b02aca31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90b82776-61e5-6171-6b7b-6981c79999b4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{90b82776-61e5-6171-6b7b-6981c79999b4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8b1c6577-05d7-db59-6fbc-3732b02aca31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8b1c6577-05d7-db59-6fbc-3732b02aca31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{625fdb56-6645-c0e8-766f-ee68909c8434}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{625fdb56-6645-c0e8-766f-ee68909c8434}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{326add84-9c0b-4660-117d-1057ff783af9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

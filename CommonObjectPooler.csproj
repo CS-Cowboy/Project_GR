@@ -36,14 +36,15 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Runtime\Calculus.cs" />
-     <Compile Include="Assets\Scripts\Runtime\Properties.cs" />
-     <Compile Include="Assets\Scripts\Runtime\PoolHandler.cs" />
-     <Compile Include="Assets\Scripts\Runtime\ObjectPool.cs" />
-     <Compile Include="Assets\Scripts\Runtime\Calculus3D.cs" />
-     <Compile Include="Assets\Scripts\Runtime\Calculus2D.cs" />
-     <Compile Include="Assets\Scripts\Runtime\PoolableObject.cs" />
-     <None Include="Assets\Scripts\Runtime\CommonObjectPooler.asmdef" />
+     <Compile Include="Assets\Scripting\Runtime\Calculus2D.cs" />
+     <Compile Include="Assets\Scripting\Runtime\Calculus.cs" />
+     <Compile Include="Assets\Scripting\Runtime\PoolableAnimator.cs" />
+     <Compile Include="Assets\Scripting\Runtime\Properties.cs" />
+     <Compile Include="Assets\Scripting\Runtime\Calculus3D.cs" />
+     <Compile Include="Assets\Scripting\Runtime\PoolableObject.cs" />
+     <Compile Include="Assets\Scripting\Runtime\PoolHandler.cs" />
+     <Compile Include="Assets\Scripting\Runtime\ObjectPool.cs" />
+     <None Include="Assets\Scripting\Runtime\CommonObjectPooler.asmdef" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.4f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
