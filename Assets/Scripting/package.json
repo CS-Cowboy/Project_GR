@@ -2,7 +2,7 @@
 	"name": "com.braineeeedevs.commonobjectpooler",
 	"version": "0.1.11111111",
 	"displayName": "Common Object Pooler",
-	"description": "A basic ojbect poooler with automatic pooling. Also provides Calculus functions enforced via interface.",
+	"description": "A basic ojbect poooler with automatic pooling. Also provides Calculus functions",
 	"unity": "2021.3",
 	"unityRelease": "4f1",
 	"dependencies": {},
