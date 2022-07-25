@@ -7,9 +7,7 @@ namespace com.braineeeeDevs.objectPooling.Tests
     {
         public DisposableObject newObject;
         public ObjectPool pool;
-        /// <summary>
-        /// Loads the pool to capacity.
-        /// </summary>
+
         public void LoadPool()
         {
             for (int c = 0; c < pool.capacity; c++)
@@ -20,7 +18,7 @@ namespace com.braineeeeDevs.objectPooling.Tests
         /// <summary>
         /// Creates one instance of "example" from your Resources folder.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Instance of "example" prefab. </returns>
         public DisposableObject CreateObject()
         {
             var exObj = (MonoBehaviour.Instantiate(Resources.Load("example")) as GameObject).GetComponent<DisposableObject>();
