@@ -57,7 +57,7 @@ namespace com.braineeeeDevs.objectPooling
             {
                 if (objects.Count == capacity)
                 {
-                    DestroyImmediate(obj);
+                    Destroy(obj.gameObject);
                 }
                 else
                 {

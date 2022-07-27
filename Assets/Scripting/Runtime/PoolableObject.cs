@@ -12,10 +12,10 @@ namespace com.braineeeeDevs.objectPooling
 
 	public abstract class PoolableObject : MonoBehaviour
 	{
-		public Properties traits;
-		protected float healthPoints = 1f, lifeSpan = -1f;
+		[SerializeField] protected Properties traits;
+		[SerializeField] protected float healthPoints = 1f, lifeSpan = -1f;
 		protected Coroutine deathWait, onDeathRoutine;
-		protected Guid id;
+		[SerializeField] protected Guid id;
 		protected Animator animator;
 		protected AudioSource sounds;
 		public Properties Traits
@@ -78,8 +78,7 @@ namespace com.braineeeeDevs.objectPooling
 		///6D 00 65 00 6D 00 65 00 6E 00 74 00 6F 00 20 00 6D 00 6F 00 72 00 69 00
 		protected IEnumerator WaitForDeath()    //Stage 0; Object is alive and counting down its time
 		{
-			sounds.clip = traits.onSpawnSound;
-			sounds.Play();
+			PlaySound(traits.onSpawnSound);
 			yield return new WaitForSeconds(lifeSpan);
 			Die();
 		}
@@ -93,32 +92,37 @@ namespace com.braineeeeDevs.objectPooling
 			}
 		}
 
-		public virtual void Die()
+		protected virtual void Die()
 		{
 			StartCoroutine(OnDeath());
 		}
 		protected virtual IEnumerator OnDeath()
 		{
-			sounds.clip = traits.onDeathSound;
-			sounds.Play();
-			animator.SetBool(traits.deathState, true); //Stage 1; Object is in the process of dying. 
+			PlaySound(traits.onDeathSound);
+			animator.SetTrigger(traits.deathState); //Stage 1; Object is in the process of dying. 
 			yield return new WaitForSeconds(traits.deathWaitLength);
 			animator.SetFloat(traits.decomposeState, traits.decompositionAnimationSpeed); //Stage 2; Object is dead but still exists in the world.
 			yield return new WaitForSeconds(traits.decompositionWaitLength);
-			animator.SetBool(traits.deathState, false); //Stage 1; Object is in the process of dying. 
+			animator.SetTrigger(traits.deathState); //Stage 1; Object is in the process of dying. 
 			gameObject.SetActive(false); //Stage 3; object is removed from the world and again pooled.
 		}
-
+		protected virtual void StopSound(AudioClip clip)
+		{
+			if(sounds.clip == clip)
+				sounds.Stop();
+		}
 		protected virtual void PlaySound(AudioClip snd)
 		{
-			if (sounds.isPlaying)
+			if (sounds.clip != snd)
 			{
-				sounds.Stop();
+				sounds.clip = snd;
 			}
-			sounds.clip = snd;
-			sounds.Play();
-		}
 
+			if (!sounds.isPlaying)
+			{
+				sounds.Play();
+			}
+		}
 
 		protected void InitializePoolable()
 		{
